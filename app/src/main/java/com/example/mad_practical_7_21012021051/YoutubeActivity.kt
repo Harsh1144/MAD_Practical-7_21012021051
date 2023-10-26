@@ -10,31 +10,26 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class YoutubeActivity : AppCompatActivity() {
 
-    private fun initYoutubePlayer() {
-        val webView = findViewById<WebView>(R.id.myweb1)
-        val webSettings: WebSettings = webView.settings
-        webSettings.javaScriptEnabled = true
-        webSettings.loadWithOverviewMode = true
-        webSettings.useWideViewPort = true
+    class YoutubeActivity : AppCompatActivity() {
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_youtube)
 
-        // Replace this with the standard YouTube URL
-        val youtubeUrl = "https://www.youtube.com/watch?v=L5Qz0_45vOI"
+            val webView: FloatingActionButton = findViewById(R.id.webviewbtn)
 
-        // Load the YouTube URL into the WebView
-        webView.loadUrl(youtubeUrl)
-    }
+            webView.setOnClickListener {
+                Intent(this@YoutubeActivity, MainActivity::class.java).also { startActivity(it) }
+            }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_youtube)
+            val myWebView = findViewById<WebView>(R.id.youtubewebview)
+            val youtubeId = "fJn9B64Znrk"
+            val webSettings: WebSettings = myWebView.settings
+            webSettings.javaScriptEnabled = true
+            webSettings.loadWithOverviewMode = true
+            webSettings.useWideViewPort = true
+            myWebView.loadUrl("https://www.youtube.com/embed/$youtubeId")
 
-        // Initialize the WebView to display the YouTube video
-        initYoutubePlayer()
 
-        val ytWebView: FloatingActionButton = findViewById(R.id.youtubebtn)
-
-        ytWebView.setOnClickListener() {
-            Intent(this@YoutubeActivity, MainActivity::class.java).also { startActivity(it) }
         }
     }
 }

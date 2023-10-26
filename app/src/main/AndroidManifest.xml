@@ -16,7 +16,7 @@
         <activity
             android:screenOrientation="landscape"
             android:name=".YoutubeActivity"
-            android:exported="false" />
+            android:exported="false"  />
         <activity
             android:screenOrientation="landscape"
             android:name=".MainActivity"
